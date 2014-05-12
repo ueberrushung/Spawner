@@ -12,7 +12,7 @@ public class Spawner : MonoBehaviour {
 	
 	public GameObject[] agentPrefabs; //Array für Prefabs der Agenten die gespawnt werden sollen
 	public GameObject[] spawnPoints;  //
-	
+	public int AgentNumber;
 	public State state;               //lokale Variable die den aktuelle State hält
 	
 	void Awake(){
@@ -63,14 +63,11 @@ public class Spawner : MonoBehaviour {
 		Debug.Log ("***spawnt Agent***");
 		
 		GameObject[] gos = AvailableSpawnPoints();
-		
+		for( int i = 0; i < AgentNumber; i++ ){
 		for( int cnt = 0; cnt < gos.Length; cnt++){
-			GameObject go = Instantiate(agentPrefabs[Random.Range (0,agentPrefabs.Length)],
-				gos[cnt].transform.position,
-				Quaternion.identity
-				) as GameObject;
+			GameObject go = Instantiate(agentPrefabs[Random.Range (0,agentPrefabs.Length)],gos[cnt].transform.position,Quaternion.identity) as GameObject;
 			go.transform.parent = gos[cnt].transform;
-				
+			}	
 		}
 		
 		state = Spawner.State.Idle;
