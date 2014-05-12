@@ -66,7 +66,7 @@ public class Spawner : MonoBehaviour {
 		for( int i = 0; i < AgentNumber; i++ ){
 		for( int cnt = 0; cnt < gos.Length; cnt++){
 			GameObject go = Instantiate(agentPrefabs[Random.Range (0,agentPrefabs.Length)],gos[cnt].transform.position,Quaternion.identity) as GameObject;
-			go.transform.parent = gos[cnt].transform;
+			//go.transform.parent = gos[cnt].transform;
 			}	
 		}
 		
